@@ -1,0 +1,14 @@
+- name: install nodejs
+  shell: nodebrew install-binary {{ item }}
+  ignore_errors: True
+  register: nodejs_installed
+  with_items: install_version
+  vars:
+    install_version:
+      - v0.12.5
+      - v5.7.0
+
+- name: swhich version
+  shell: nodebrew use {{ use_version }}
+  vars:
+    use_version: v5.7.0
