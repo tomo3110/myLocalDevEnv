@@ -1,0 +1,12 @@
+- name: install global npm packages
+  npm: name="{{ item['name'] }}" global="yes" version="{{ item['version']|default('no') }}" state="{{ item['state']|default('latest') }}"
+  ignore_errors: True
+  with_items:
+    - { name: webpack }
+    - { name: cordova }
+    - { name: react-native-cli }
+
+- name: cache clean npm
+  shell: npm cache clean
+
+  # executable

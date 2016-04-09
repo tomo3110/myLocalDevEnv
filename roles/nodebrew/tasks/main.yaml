@@ -2,13 +2,19 @@
   shell: nodebrew install-binary {{ item }}
   ignore_errors: True
   register: nodejs_installed
-  with_items: install_version
-  vars:
-    install_version:
-      - v0.12.5
-      - v5.7.0
+  with_items:
+    - v5.7.0
 
 - name: swhich version
   shell: nodebrew use {{ use_version }}
   vars:
     use_version: v5.7.0
+
+- name: export nodebrew path
+  lineinfile:
+    dest: ~/.bash_profile
+    state: present
+    create: yes
+    line: 'export PATH={{nodebrew_path}}:$PATH'
+  vars:
+    nodebrew_path: $HOME/.nodebrew/current/bin

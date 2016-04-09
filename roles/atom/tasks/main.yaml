@@ -1,0 +1,16 @@
+- name: install atom packages
+  shell: apm install {{ item }}
+  ignore_errors: True
+  with_items:
+    - atom-ternjs
+    - color-picker
+    - git-plus
+    - language-babel
+    - linter
+    - linter-eslint
+    - minimap
+    - minimap-git-diff
+    - project-manager
+    - terminal-plus
+
+  # executable

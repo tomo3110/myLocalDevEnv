@@ -17,6 +17,8 @@
     - { name: brew-cask, state: latest }
     - { name: git }
     - { name: python }
+    - { name: android-sdk }
+    - { name: android-ndk }
 
 #brew cask install
 - name: update brew-cask
@@ -24,6 +26,7 @@
 
 - name: install homebrew cask packages
   homebrew_cask: name="{{ item }}" state=present
+  ignore_errors: True
   with_items:
     - atom
     - vagrant
@@ -32,3 +35,4 @@
     - google-drive
     # - java
     - dropbox
+    - android-studio
