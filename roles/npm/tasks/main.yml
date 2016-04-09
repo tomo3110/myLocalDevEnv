@@ -5,6 +5,7 @@
     - { name: webpack }
     - { name: cordova }
     - { name: react-native-cli }
+    - { name: electron-prebuilt }
 
 - name: cache clean npm
   shell: npm cache clean

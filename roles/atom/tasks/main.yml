@@ -12,5 +12,6 @@
     - minimap-git-diff
     - project-manager
     - terminal-plus
+    - editorconfig
 
   # executable
