@@ -1,0 +1,16 @@
+- name: install xquartz
+  homebrew_cask: name="{{ item }}" state=present
+  ignore_errors: True
+  with_items:
+    - xquartz
+
+- name: install ricty
+  homebrew: name="{{ item['name'] }}" state="{{ item['state']|default('latest') }}" install_options="{{ item['install_options']|default() }}"
+  with_items:
+    - { name: ricty }
+
+- name: copy generated font file
+  shell: "cp -f $(brew --cellar ricty)/*/share/fonts/Ricty*.ttf ~/Library/Fonts/"
+  args:
+    creates: ~/Library/Fonts/Ricty-Bold.ttf
+  notify: run fc-cache
